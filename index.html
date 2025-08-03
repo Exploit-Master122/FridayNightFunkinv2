@@ -77,5 +77,22 @@
 	<script src="js/analytics_ubg_v1_4.js"></script>
   <script src="js/ubg235_client_v1_1.js"></script>
 
+
+<div id="leave-site-warning" style="display: none;">
+</div>
+<script>
+    window.onbeforeunload = function() {
+        document.getElementById('leave-site-warning').style.display = 'block';
+        return "Leave site? Changes you made may not be saved.";
+    };
+</script>
+
+
+
+
+
+
+
+	
 </body>
 </html>
