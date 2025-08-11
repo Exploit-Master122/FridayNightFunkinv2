@@ -1,33 +1,363 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>404 Page Not found</title>
-
+    <title>404 Page Not Found</title>
     <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px 16px; border-radius: 3px; }
-      #message h3 { color: #888; font-weight: normal; font-size: 16px; margin: 16px 0 12px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
+        body {
+            background: #0a0a1a;
+            color: rgba(255,255,255,0.87);
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        #message {
+            background: rgba(10, 10, 30, 0.85);
+            width: 95%;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 40px;
+            border-radius: 10px;
+            border: 2px solid #ff0040;
+            box-shadow: 
+                0 0 20px rgba(0, 100, 255, 0.5),
+                0 0 40px rgba(255, 0, 64, 0.3);
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+            min-height: 600px;
+        }
+
+        #message h2 {
+            color: #ff0040;
+            font-weight: bold;
+            font-size: 24px;
+            margin: 0 0 15px;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(255, 0, 64, 0.7);
+        }
+
+        #message h1 {
+            font-size: 32px;
+            font-weight: bold;
+            color: #00aaff;
+            margin: 0 0 25px;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(0, 170, 255, 0.7);
+        }
+
+        #message p {
+            line-height: 1.6;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #003366, #990033);
+            text-transform: uppercase;
+            text-decoration: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 4px;
+            margin: 10px;
+            border: 1px solid #00eeff;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 100, 255, 0.3);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 15px rgba(0, 170, 255, 0.7);
+        }
+
+        .btn:active {
+            box-shadow: 0 0 25px rgba(255, 0, 64, 0.9);
+        }
+
+        .placeholder-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px dashed rgba(0, 170, 255, 0.3);
+            border-radius: 5px;
+        }
+
+        .placeholder-section h3 {
+            color: #00aaff;
+            margin-top: 0;
+        }
+
+        .links-placeholder {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+            justify-content: center;
+        }
+
+        .link-placeholder {
+            background: rgba(0, 50, 100, 0.3);
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            border: 1px solid #0066cc;
+            min-width: 150px;
+        }
+
+        .link-placeholder a {
+            color: #00eeff;
+            text-decoration: none;
+        }
+
+        .link-placeholder a:hover {
+            text-decoration: underline;
+        }
+
+        .writing-space {
+            background: rgba(0, 20, 40, 0.5);
+            border: 1px solid #0066cc;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 30px 0;
+            min-height: 150px;
+        }
+
+        .writing-space h3 {
+            color: #00aaff;
+            margin-top: 0;
+        }
+
+        .easter-egg {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        #fnf-button {
+            display: none;
+            background: linear-gradient(45deg, #ff0040, #00aaff);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 30px;
+            margin: 20px auto;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 0, 64, 0.5);
+            transform: rotate(90deg);
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform-origin: center;
+        }
+
+        #fnf-button:hover {
+            box-shadow: 0 0 25px rgba(0, 170, 255, 0.8);
+        }
+
+        #fnf-button:active {
+            box-shadow: 0 0 35px rgba(255, 0, 64, 1);
+        }
+
+        #fnf-frame {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            display: none;
+            background: #000;
+        }
+
+        #fnf-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .close-frame {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ff0040;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            #message {
+                padding: 25px 20px;
+                width: 95%;
+            }
+            
+            #message h1 {
+                font-size: 24px;
+            }
+            
+            #message p {
+                font-size: 16px;
+            }
+            
+            .links-placeholder {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
+    <div id="particles-js"></div>
+    
     <div id="message">
-      <h2>404</h2>
-      <h1>Page Not Found!!</h1>
-      <p>Did you check the URL? Pico and BF has checked the Cloudflare servers.(Haha,FNF)There is no file in this URL.Reload the site,or check the files in the source code.</p>
-      <h3>Page by Darrkon Network and HaxeFlixel,credits to NinjaMuffin99 and Jaydon Liu.</h3>
-      <p>Open Source code,<code>Funkin.ts</code> folder...</p>
+        <h2>404</h2>
+        <h1>Page Not Found!!</h1>
+        <p>Did you check the URL? Pico and BF has checked the Cloudflare servers.(Haha,FNF)There is no file in this URL.Reload the site,or check the files in the source code.</p>
+        
+        <div class="placeholder-section">
+            <h3>Navigation</h3>
+            <div class="links-placeholder">
+                <div class="link-placeholder">
+                    <a href="https://funkymods.github.io">All Versions (Snokido Game Engine)< </a>
+                </div>
+                <div class="link-placeholder">
+                    <a href="#UnblockedLinkUpdated!">[Update Game Link]</a>
+                </div>
+                <div class="link-placeholder">
+                    <a href="https://darrkonad.vercel.app/">[Darrkon Network Partner: (NinjaMuffun99) ]</a>
+                </div>
+                <div class="link-placeholder">
+                    <a href="https://ninja-muffin24.itch.io/funkin">[Original Game]</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="writing-space">
+            <h3>Friday Night Funkin'</h3>
+            <p>A game by NinjaMuffin99,Updated by Exploit-Master122 in HaxeFlixel Engine and HTML/TypeScript source code.</p>
+        </div>
+        
+        
+        
+        <h3>Page by Darrkon Network and HaxeFlixel,credits to NinjaMuffin99 and Jaydon Liu.</h3>
+        <p>Open Source code,<code>Funkin.ts</code> folder...</p>
+        
+        <div class="easter-egg">
+            ↑↑↓↓ ← → ← → B A ↵
+        </div>
     </div>
-  </body>
+    
+    <button id="fnf-button">Launch FNF Proxied</button>
+    
+    <div id="fnf-frame">
+        <button class="close-frame">CLOSE</button>
+        <iframe src="https://exploit-master122.github.io/FridayNightFunkinv2/"></iframe>
+    </div>
+
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize particles
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: ["#003366", "#990033"] },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#00aaff",
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                }
+            }
+        });
+
+        // Easter egg!
+        let keySequence = [];
+        const easterCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA', 'Enter'];
+        
+        document.addEventListener('keydown', function(e) {
+            keySequence.push(e.code);
+            
+            if (keySequence.length > easterCode.length) {
+                keySequence.shift();
+            }
+            
+            // Check if the last entered keys match the easter egg sequence............
+            if (keySequence.length >= easterCode.length) {
+                const lastKeys = keySequence.slice(-easterCode.length);
+                if (lastKeys.join(',') === easterCode.join(',')) {
+                    document.getElementById('fnf-button').style.display = 'block';
+                    keySequence = [];
+                }
+            }
+        });
+        
+        // Buttonz Oof
+        document.getElementById('fnf-button').addEventListener('click', function() {
+            document.getElementById('fnf-frame').style.display = 'block';
+        });
+        
+        document.querySelector('.close-frame').addEventListener('click', function() {
+            document.getElementById('fnf-frame').style.display = 'none';
+        });
+        
+        // Add glow effect to all buttons on click!
+        const buttons = document.querySelectorAll('.btn, #fnf-button, .close-frame');
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                this.style.boxShadow = '0 0 30px rgba(0, 170, 255, 1)';
+                setTimeout(() => {
+                    this.style.boxShadow = '';
+                }, 300);
+            });
+        });
+    </script>
+</body>
 </html>
